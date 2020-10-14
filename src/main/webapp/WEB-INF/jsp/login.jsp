@@ -39,14 +39,15 @@
 
 									<table style="width: 100%;" cellspacing="1" cellpadding="4" align="center">
 										<tbody>
-											<tr>
-												<td valign="top"><b class="gensmall">Login :</b></td>
-												<td><input class="post" name="username" size="25" tabindex="1" type="text" /></td>
-											</tr>
-											<tr>
-												<td valign="top"><b class="gensmall">Mot de passe:</b></td>
-												<td><input class="post" name="password" size="25" tabindex="2" type="password" /></td>
-											</tr>
+
+										<tr>
+											<td valign="top"><b class="gensmall">Login :</b></td>
+											<td><input class="post" name="username" size="25" tabindex="1" type="text" /></td>
+										</tr>
+										<tr>
+											<td valign="top"><b class="gensmall">Mot de passe:</b></td>
+											<td><input class="post" name="password" size="25" tabindex="2" type="password" /></td>
+										</tr>
 
 										</tbody>
 									</table>

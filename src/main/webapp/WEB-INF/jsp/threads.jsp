@@ -65,7 +65,7 @@
 	
 	
 							<tr>
-								<td class="row1"><a class="topictitle" href="#" >Mon fil de discussion</a></td>
+								<td class="row1"><a class="topictitle" href="AuthServlet" >Mon fil de discussion</a></td>
 								<td class="row2" align="center" width="130"><p class="topicauthor"><a class="username-coloured" href="#">Yves</a></p></td>
 								<td class="row1" align="center" width="50"><p class="topicdetails">10</p></td>
 								<td class="row2" align="center" width="50"><p class="topicdetails">1234</p></td>
