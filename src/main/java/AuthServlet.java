@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.*;
 
 
 @WebServlet (name = "AuthServlet")
@@ -30,5 +31,31 @@ public class AuthServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+
+        /*
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new Error("j'aime le viande",e);
+        }
+        System.out.println("Driver loaded");
+
+        // Try to connect
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection
+                    ("jdbc:mysql://db:3306/testdb1", "testuser", "root");
+        } catch (SQLException throwables) {
+            throw new Error("j'aime le poulet",throwables);
+        }
+
+        System.out.println("It works!");
+
+        try {
+            connection.close();
+        } catch (SQLException throwables) {
+            throw new Error("j'aime le poisson",throwables);
+        }
+         */
     }
 }

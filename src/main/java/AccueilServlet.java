@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 @WebServlet(name = "AccueilServlet")
 public class AccueilServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO : Question > seulement doGet dans doPost car on ne fait rien d'autre que demander une autre page d'ici ?
         doGet(request, response);
     }
 
@@ -17,6 +18,7 @@ public class AccueilServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         request.getRequestDispatcher("/WEB-INF/jsp/threads.jsp").forward(request, response);
+
 
         /*try (PrintWriter writer = response.getWriter()) {
             writer.println("<!DOCTYPE html><html>");
@@ -31,4 +33,5 @@ public class AccueilServlet extends HttpServlet {
             writer.println("</body>");
             writer.println("</html>");
         }*/
-    }}
+    }
+}

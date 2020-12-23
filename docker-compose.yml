@@ -3,7 +3,7 @@ services:
   db:
      image: mysql:latest
      volumes:
-       - /opt/test:/var/lib/mysql
+       - /run/desktop/mnt/host/f/Documents/Cours/m2_cyber/m2_gla/gla_forum/mysql_db:/var/lib/mysql
        - ./mysql-dump:/docker-entrypoint-initdb.d
      environment:
        MYSQL_ROOT_PASSWORD: root
@@ -26,7 +26,7 @@ services:
         - db
       image: tomcat
       volumes:
-        - /home/bscnd/Documents/m2/gla/forum/target:/usr/local/tomcat/webapps
+        - /run/desktop/mnt/host/f/Documents/Cours/m2_cyber/m2_gla/gla_forum/target:/usr/local/tomcat/webapps
       ports:
         - '8082:8080'
       environment:
