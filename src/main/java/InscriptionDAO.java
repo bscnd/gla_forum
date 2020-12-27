@@ -1,3 +1,5 @@
+import beans.UserProfile;
+
 import java.sql.*;
 
 // TODO : Objets inaccessibles ? https://bit.ly/34MCsXs

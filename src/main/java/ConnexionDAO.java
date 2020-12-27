@@ -1,3 +1,5 @@
+import beans.UserProfile;
+
 import java.sql.*;
 
 public class ConnexionDAO {

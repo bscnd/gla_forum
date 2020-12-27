@@ -12,38 +12,38 @@
         </cookie-config>
     </session-config>
 
-
+    <!--TODO : vérifier si il faut préciser le package ?-->
     <servlet>
         <servlet-name>AccueilServlet</servlet-name>
-        <servlet-class>AccueilServlet</servlet-class>
+        <servlet-class>servlets.AccueilServlet</servlet-class>
 
     </servlet>
 
     <servlet-mapping>
         <servlet-name>AccueilServlet</servlet-name>
-        <url-pattern>/AccueilServlet</url-pattern>
+        <url-pattern>/accueil</url-pattern>
     </servlet-mapping>
 
 
     <servlet>
         <servlet-name>AuthServlet</servlet-name>
-        <servlet-class>AuthServlet</servlet-class>
+        <servlet-class>servlets.AuthServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>AuthServlet</servlet-name>
-        <url-pattern>/AuthServlet</url-pattern>
+        <url-pattern>/authentification</url-pattern>
     </servlet-mapping>
 
 
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>RegisterServlet</servlet-class>
+        <servlet-class>servlets.RegisterServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/RegisterServlet</url-pattern>
+        <url-pattern>/register</url-pattern>
     </servlet-mapping>
 
 
