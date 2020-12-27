@@ -1,8 +1,10 @@
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -17,21 +19,20 @@ public class AccueilServlet extends HttpServlet {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
 
+        ServletOutputStream out = response.getOutputStream();
+
+        HttpSession session = request.getSession();
+        String name = (String) session.getAttribute("name");
+
+        if (name != null){
+            out.println("Bonjour, " + name + " !");
+        } else {
+            out.println("Utilisateur inconnu !");
+        }
+
         request.getRequestDispatcher("/WEB-INF/jsp/threads.jsp").forward(request, response);
 
 
-        /*try (PrintWriter writer = response.getWriter()) {
-            writer.println("<!DOCTYPE html><html>");
-            writer.println("<head>");
-            writer.println("<meta charset=\"UTF-8\" />");
-            writer.println("<title>MyServlet.java:doGet(): Servlet code!</title>");
-            writer.println("</head>");
-            writer.println("<body>");
 
-            writer.println("<h1>This is a simple java servlet.</h1>");
-
-            writer.println("</body>");
-            writer.println("</html>");
-        }*/
     }
 }

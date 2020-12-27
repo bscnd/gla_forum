@@ -309,7 +309,7 @@ th {
 	font-size: 1.1em;
 	font-weight: bold;
 	background-color: #5f5f5f;
-	background-image: url('styles/subsilver2/theme/images/cellpic3.gif');
+	/* background-image: url('styles/subsilver2/theme/images/cellpic3.gif'); */
 	white-space: nowrap;
 	padding: 7px 5px;
 }
@@ -330,10 +330,10 @@ td.profile {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	background: white url('styles/subsilver2/theme/images/cellpic2.jpg') repeat-y scroll top left;
+	/*background: white url('styles/subsilver2/theme/images/cellpic2.jpg') repeat-y scroll top left;*/
 }
 .rtl .catdiv {
-	background: white url('styles/subsilver2/theme/images/cellpic2_rtl.jpg') repeat-y scroll top right;
+	/*background: white url('styles/subsilver2/theme/images/cellpic2_rtl.jpg') repeat-y scroll top right;*/
 }
 
 .cat {
@@ -342,7 +342,7 @@ td.profile {
 	padding: 0;
 	border: 0;
 	background-color: #cfcfcf;
-	background-image: url('styles/subsilver2/theme/images/cellpic1.gif');
+	/*background-image: url('styles/subsilver2/theme/images/cellpic1.gif');*/
 	text-indent: 4px;
 }
 

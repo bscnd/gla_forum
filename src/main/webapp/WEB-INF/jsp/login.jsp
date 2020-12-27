@@ -1,11 +1,17 @@
+<%-- TODO : Impossible d'importe la JSTL. Répertoire lib dans WEB-INF ? (cf OC)  --%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" xml:lang="en-gb"
 	lang="en-gb">
 	<head>
-	
+
+
 	<title>LOGIN</title>
-	
-	<link rel="stylesheet" href="fichiers/style.css" type="text/css" />
+
+		<%-- Ceci est un commentaire JSP, non visible dans la page HTML finale.  --%>
+		<!-- Ceci est un simple commentaire HTML. -->
+
+		<link rel="stylesheet" href="fichiers/style.css" type="text/css" />
 	</head>
 	<body class="ltr">
 	
@@ -57,8 +63,11 @@
 							<tr>
 								<td class="cat" colspan="2" align="center">
 									<input name="login" class="btnmain" value="Login" tabindex="5" type="submit" />
-									<input name="register" class="btnmain" value="Register" tabindex="5" type="submit" />
 								</td>
+								<td class="row1">
+									<a class="topictitle" href="RegisterServlet" >S'enregistrer</a>
+								</td>
+
 							</tr>
 						</tbody>
 					</table>
