@@ -12,7 +12,10 @@
         </cookie-config>
     </session-config>
 
-    <!--TODO : vérifier si il faut préciser le package ?-->
+    <listener>
+        <listener-class>config.InitDaoFactory</listener-class>
+    </listener>
+
     <servlet>
         <servlet-name>AccueilServlet</servlet-name>
         <servlet-class>servlets.AccueilServlet</servlet-class>

@@ -12,9 +12,8 @@ public class DAOFactory {
 
     private static final String FICHIER_PROPERTIES       = "dao.properties";
     private static final String PROPERTY_URL             = "url";
-    // TODO : Driver ?
     private static final String PROPERTY_DRIVER          = "driver";
-    private static final String PROPERTY_NOM_UTILISATEUR = "username";
+    private static final String PROPERTY_NOM_UTILISATEUR = "user";
     private static final String PROPERTY_MOT_DE_PASSE    = "password";
 
     private String              url;
@@ -27,9 +26,11 @@ public class DAOFactory {
         this.password = password;
     }
 
-    /*
+    /**
      * Méthode chargée de récupérer les informations de connexion à la base de
-     * données, charger le driver JDBC et retourner une instance de la Factory
+     * données, charger le driver JDBC
+     * @return une instance de Factory
+     * @throws DAOConfigurationException si il y a un problème avec le DAO
      */
     public static DAOFactory getInstance() throws DAOConfigurationException {
         Properties properties = new Properties();
@@ -51,6 +52,7 @@ public class DAOFactory {
             driver = properties.getProperty( PROPERTY_DRIVER );
             username = properties.getProperty( PROPERTY_NOM_UTILISATEUR );
             password = properties.getProperty( PROPERTY_MOT_DE_PASSE );
+
         } catch ( IOException e ) {
             throw new DAOConfigurationException( "Impossible de charger le fichier properties " + FICHIER_PROPERTIES, e );
         }
@@ -64,14 +66,18 @@ public class DAOFactory {
         return new DAOFactory( url, username, password );
     }
 
-    /* Méthode chargée de fournir une connexion à la base de données */
+    /**
+     * Fourni une connexion à la base de données
+     * @return un objet Connexion
+     * @throws SQLException si une requête est invalide
+     */
     /* package */ Connection getConnection() throws SQLException {
         return DriverManager.getConnection( url, username, password );
     }
 
-    /*
-     * Méthodes de récupération de l'implémentation des différents DAO (un seul
-     * pour le moment)
+
+    /**
+     * @return l'implémentation d'un DAOUser
      */
     public DAOUser getUtilisateurDao() {
         return new DAOUserImpl( this );

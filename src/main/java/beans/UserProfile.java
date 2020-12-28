@@ -14,6 +14,9 @@ public class UserProfile {
     private String role;
     private Timestamp created;
 
+    public Long getId() {
+        return id;
+    }
 
     public String getUsername() {
         return username;
@@ -29,6 +32,10 @@ public class UserProfile {
 
     public Timestamp getCreated() {
         return created;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setUsername(String username) {
