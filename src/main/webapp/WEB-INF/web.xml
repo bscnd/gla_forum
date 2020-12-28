@@ -32,7 +32,7 @@
 
     <servlet-mapping>
         <servlet-name>AuthServlet</servlet-name>
-        <url-pattern>/authentification</url-pattern>
+        <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
 

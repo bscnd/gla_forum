@@ -1,5 +1,6 @@
 package beans;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -7,10 +8,11 @@ import java.util.Date;
  */
 public class UserProfile {
 
+    private Long id;
     private String username;
     private String password;
     private String role;
-    private Date created;
+    private Timestamp created;
 
 
     public String getUsername() {
@@ -25,7 +27,7 @@ public class UserProfile {
         return role;
     }
 
-    public Date getCreated() {
+    public Timestamp getCreated() {
         return created;
     }
 
@@ -41,7 +43,7 @@ public class UserProfile {
         this.role = role;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(Timestamp created) {
         this.created = created;
     }
 }

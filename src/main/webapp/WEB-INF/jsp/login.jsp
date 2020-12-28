@@ -1,89 +1,33 @@
-<%-- TODO : Impossible d'importe la JSTL. Répertoire lib dans WEB-INF ? (cf OC)  --%>
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Connexion</title>
+	<link rel="stylesheet" href="fichiers/oc_stylesheet.css" type="text/css" />
+</head>
+<body>
+<form method="post" action="connexion">
+	<fieldset>
+		<legend>Connexion</legend>
+		<p>Vous pouvez vous connecter via ce formulaire.</p>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" xml:lang="en-gb"
-	lang="en-gb">
-	<head>
+		<label for="username">Nom d'utilisateur <span class="requis">*</span></label>
+		<input type="email" id="email" name="email" value="<c:out value="${utilisateur.username}"/>" size="20" maxlength="60" />
+		<span class="erreur">${form.erreurs['username']}</span>
+		<br />
 
+		<label for="password">Mot de passe <span class="requis">*</span></label>
+		<input type="password" id="password" name="password" value="" size="20" maxlength="20" />
+		<span class="erreur">${form.erreurs['password']}</span>
+		<br />
 
-	<title>LOGIN</title>
+		<input type="submit" value="Connexion" class="sansLabel" />
+		<br />
 
-		<%-- Ceci est un commentaire JSP, non visible dans la page HTML finale.  --%>
-		<!-- Ceci est un simple commentaire HTML. -->
-
-		<link rel="stylesheet" href="fichiers/style.css" type="text/css" />
-	</head>
-	<body class="ltr">
-	
-		<div id="wrapcentre">
-	
-			<br style="clear: both;" />
-	
-				<table class="tablebg" style="margin-top: 5px;" cellspacing="1" cellpadding="0" width="100%">
-					<tbody>
-						<tr>
-							<td class="row1">
-								<p class="breadcrumbs">
-									<a href="#">Board index</a>
-								</p>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<br />
-	
-				<form action="#" method="post">
-
-					<table class="tablebg" cellspacing="1" width="100%">
-						<tbody>
-							<tr>
-								<th colspan="2">Login</th>
-							</tr>
-
-							<tr>
-								<td class="row2">
-
-									<table style="width: 100%;" cellspacing="1" cellpadding="4" align="center">
-										<tbody>
-
-										<tr>
-											<td valign="top"><b class="gensmall">Login :</b></td>
-											<td><input class="post" name="username" size="25" tabindex="1" type="text" /></td>
-										</tr>
-										<tr>
-											<td valign="top"><b class="gensmall">Mot de passe:</b></td>
-											<td><input class="post" name="password" size="25" tabindex="2" type="password" /></td>
-										</tr>
-
-										</tbody>
-									</table>
-								</td>
-							</tr>
-
-							<tr>
-								<td class="cat" colspan="2" align="center">
-									<input name="login" class="btnmain" value="Login" tabindex="5" type="submit" />
-								</td>
-								<td class="row1">
-									<a class="topictitle" href="RegisterServlet" >S'enregistrer</a>
-								</td>
-
-							</tr>
-						</tbody>
-					</table>
-
-				</form>
-
-				<table class="tablebg" style="margin-top: 5px;" cellspacing="1"
-					cellpadding="0" width="100%">
-					<tbody>
-						<tr>
-							<td class="row1">
-								<p class="breadcrumbs">Index du forum</p>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-		</div>
-	</body>
+		<p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
+	</fieldset>
+</form>
+</body>
 </html>
