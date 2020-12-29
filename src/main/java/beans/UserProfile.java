@@ -11,6 +11,7 @@ public class UserProfile {
     private Long id;
     private String username;
     private String password;
+    private String salt;
     private String role;
     private Timestamp created;
 
@@ -24,6 +25,10 @@ public class UserProfile {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getSalt(){
+        return salt;
     }
 
     public String getRole() {
@@ -44,6 +49,10 @@ public class UserProfile {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setSalt(String salt){
+        this.salt = salt;
     }
 
     public void setRole(String role) {

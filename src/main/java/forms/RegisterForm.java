@@ -3,13 +3,8 @@ package forms;
 import beans.UserProfile;
 import dao.DAOException;
 import dao.DAOUser;
-import dao.DAOUtilitaire;
-
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import java.security.SecureRandom;
 import java.security.spec.KeySpec;
-import java.util.Arrays;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,8 +18,6 @@ public class RegisterForm {
     public static final String CHAMP_PASSWORD = "password";
     public static final String CHAMP_CONF = "confirmation";
     public static final String CHAMP_ROLE = "role";
-
-    public static final String ALGO_HASH = "SHA-256";
 
     String resultat;
     Map<String, String> erreurs = new HashMap<>();
@@ -117,6 +110,7 @@ public class RegisterForm {
         Base64.Encoder encoder = Base64.getEncoder();
 
         utilisateur.setPassword(encoder.encodeToString(hash));
+        utilisateur.setSalt(encoder.encodeToString(salt));
     }
 
 

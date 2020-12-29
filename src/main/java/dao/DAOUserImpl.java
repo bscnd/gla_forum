@@ -10,7 +10,7 @@ public class DAOUserImpl implements DAOUser{
 
     private DAOFactory daoFactory;
     private static final String SQL_SELECT_PAR_USERNAME = "SELECT id, username, password, created FROM users WHERE username = ?";
-    private static final String SQL_INSERT_USER = "INSERT INTO users (username, password, role, created) VALUES (?, ?, ?, NOW())";
+    private static final String SQL_INSERT_USER = "INSERT INTO users (username, password, salt, role, created) VALUES (?, ?, ?, ?, NOW())";
 
     DAOUserImpl( DAOFactory daoFactory ) {
         this.daoFactory = daoFactory;
@@ -30,7 +30,8 @@ public class DAOUserImpl implements DAOUser{
         try {
             /* Récupération d'une connexion depuis la Factory */
             connexion = daoFactory.getConnection();
-            preparedStatement = initRequest( connexion, SQL_INSERT_USER, true, utilisateur.getUsername(), utilisateur.getPassword(), utilisateur.getRole());
+            preparedStatement = initRequest( connexion, SQL_INSERT_USER, true, utilisateur.getUsername(),
+                                                utilisateur.getPassword(), utilisateur.getSalt(), utilisateur.getRole());
             int statut = preparedStatement.executeUpdate();
             /* Analyse du statut retourné par la requête d'insertion */
             if ( statut == 0 ) {
@@ -49,7 +50,6 @@ public class DAOUserImpl implements DAOUser{
         } finally {
             fermeturesSilencieuses( valeursAutoGenerees, preparedStatement, connexion );
         }
-
     }
 
     /**
