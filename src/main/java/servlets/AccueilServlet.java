@@ -13,7 +13,6 @@ import java.io.PrintWriter;
 @WebServlet(name = "servlets.AccueilServlet")
 public class AccueilServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO : Question > seulement doGet dans doPost car on ne fait rien d'autre que demander une autre page d'ici ?
         doGet(request, response);
     }
 

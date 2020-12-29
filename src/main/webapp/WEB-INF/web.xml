@@ -4,14 +4,6 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <!-- Configuration des options de jeton de session -->
-    <session-config>
-        <cookie-config>
-            <secure>true</secure>
-            <!--TODO : http-only option ?-->
-        </cookie-config>
-    </session-config>
-
     <listener>
         <listener-class>config.InitDaoFactory</listener-class>
     </listener>
@@ -49,5 +41,13 @@
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
 
+    <!-- Configuration des options de jeton de session -->
+    <session-config>
+        <cookie-config>
+            <secure>true</secure>
+            <!-- TODO : http-only ne fonctionne pas -->
+
+        </cookie-config>
+    </session-config>
 
 </web-app>

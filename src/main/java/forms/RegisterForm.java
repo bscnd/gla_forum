@@ -7,9 +7,14 @@ import dao.DAOUtilitaire;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.security.SecureRandom;
+import java.security.spec.KeySpec;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 import javax.servlet.http.HttpServletRequest;
 
 public class RegisterForm {
@@ -101,13 +106,17 @@ public class RegisterForm {
             setErreur( CHAMP_CONF, null );
         }
 
-        MessageDigest digest = MessageDigest.getInstance(ALGO_HASH);
-        byte[] encodedhash = digest.digest(
-                motDePasse.getBytes(StandardCharsets.UTF_8));
+        SecureRandom random = new SecureRandom();
+        byte[] salt = new byte[16];
+        random.nextBytes(salt);
 
-        // TODO : Vérifier si OK
-        utilisateur.setPassword(Arrays.toString(encodedhash));
+        KeySpec spec = new PBEKeySpec(motDePasse.toCharArray(), salt, 65536, 128);
+        SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
 
+        byte[] hash = factory.generateSecret(spec).getEncoded();
+        Base64.Encoder encoder = Base64.getEncoder();
+
+        utilisateur.setPassword(encoder.encodeToString(hash));
     }
 
 
@@ -139,7 +148,6 @@ public class RegisterForm {
      * @throws Exception levée en cas d'incohérence
      */
     private void validationMdp(String password, String confirmation) throws Exception{
-        // TODO : Renforcer les prérequis de sécurité sur les mots de passe ?
         if (password != null && confirmation != null){
             if (!password.equals(confirmation)){
                 throw new Exception("les mots de passe saisis ne correspondent pas.");

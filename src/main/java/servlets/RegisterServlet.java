@@ -30,7 +30,6 @@ public class RegisterServlet extends HttpServlet {
         this.daoUser = ( (DAOFactory) getServletContext().getAttribute( CONF_DAO_FACTORY ) ).getUtilisateurDao();
     }
 
-    // TODO : Protected ou Public ?
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
