@@ -46,8 +46,6 @@
         <cookie-config>
             <secure>true</secure>
             <!-- TODO : http-only ne fonctionne pas -->
-
         </cookie-config>
     </session-config>
-
 </web-app>

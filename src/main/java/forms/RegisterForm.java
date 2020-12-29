@@ -104,7 +104,7 @@ public class RegisterForm {
         random.nextBytes(salt);
 
         KeySpec spec = new PBEKeySpec(motDePasse.toCharArray(), salt, 65536, 128);
-        SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+        SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
 
         byte[] hash = factory.generateSecret(spec).getEncoded();
         Base64.Encoder encoder = Base64.getEncoder();

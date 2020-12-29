@@ -9,7 +9,7 @@ import static dao.DAOUtilitaire.initRequest;
 public class DAOUserImpl implements DAOUser{
 
     private DAOFactory daoFactory;
-    private static final String SQL_SELECT_PAR_USERNAME = "SELECT id, username, password, created FROM users WHERE username = ?";
+    private static final String SQL_SELECT_PAR_USERNAME = "SELECT * FROM users WHERE username = ?";
     private static final String SQL_INSERT_USER = "INSERT INTO users (username, password, salt, role, created) VALUES (?, ?, ?, ?, NOW())";
 
     DAOUserImpl( DAOFactory daoFactory ) {
@@ -95,6 +95,8 @@ public class DAOUserImpl implements DAOUser{
         utilisateur.setUsername( resultSet.getString( "username" ) );
         utilisateur.setPassword( resultSet.getString( "password" ) );
         utilisateur.setCreated( resultSet.getTimestamp( "created" ) );
+        utilisateur.setRole( resultSet.getString( "role" ) );
+        utilisateur.setSalt( resultSet.getString( "salt" ) );
         return utilisateur;
     }
 }
