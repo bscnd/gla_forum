@@ -90,4 +90,10 @@ public class DAOFactory {
         return new DAOTopicImpl( this );
     }
 
+    /**
+     * @return l'implémentation d'un DAOMessage
+     */
+    public DAOMessage getMessageDao() {
+        return new DAOMessageImpl( this );
+    }
 }

@@ -34,6 +34,7 @@ public class TopicCreationForm {
         Topic topic = new Topic();
         try {
             traiterTopicname( topicname, topic );
+            // TODO : Tous les topics sont créés par Thierry
             int createur = 6;
             topic.setCreateur(createur);
 

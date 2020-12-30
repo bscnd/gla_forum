@@ -16,27 +16,23 @@
 		<label for="username">Nom d'utilisateur <span class="requis">*</span></label>
 		<input type="text" id="username" name="username" value="<c:out value="${utilisateur.username}"/>" size="20" maxlength="60" />
 		<span class="erreur">${form.erreurs['username']}</span>
-		<br />
+		<br/>
 
 		<label for="password">Mot de passe <span class="requis">*</span></label>
 		<input type="password" id="password" name="password" value="" size="20" maxlength="20" />
 		<span class="erreur">${form.erreurs['password']}</span>
-		<br />
+		<br/>
 
 		<input type="submit" value="Connexion" class="sansLabel" />
-		<br />
+		<br/>
 
 		<p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
 
 		<%-- Vérification de la présence d'un objet utilisateur en session --%>
 		<c:if test="${!empty sessionScope.sessionUtilisateur}">
-			<%-- Si l'utilisateur existe en session, alors on affiche son adresse email. --%>
+			<%-- Si l'utilisateur existe en session, alors on affiche son username. --%>
 			<p class="succes">Vous êtes connecté(e) en tant que : ${sessionScope.sessionUtilisateur.username}</p>
 		</c:if>
-
-
-
-
 	</fieldset>
 </form>
 </body>

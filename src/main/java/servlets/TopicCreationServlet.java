@@ -12,17 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "servlets.AccueilServlet")
+@WebServlet(name = "servlets.TopicCreationServlet")
 public class TopicCreationServlet extends HttpServlet {
     public static final String VUE = "/WEB-INF/jsp/topicCreation.jsp";
     private static final String SESSION_USER = "sessionUtilisateur";
     private static final String CONF_DAO_FACTORY = "daofactory";
     private DAOTopic daoTopic;
 
-    // TODO : Besoin dans chaque servlet qui nécessite de manipuler des données ?
     public void init() throws ServletException {
-        /* Récupération d'une instance de notre DAO Utilisateur (dans init pour éviter qu'une instance ne soit
-         * créée à chaque requête reçue. */
         this.daoTopic = ( (DAOFactory) getServletContext().getAttribute( CONF_DAO_FACTORY ) ).getTopicDao();
     }
 
@@ -40,6 +37,4 @@ public class TopicCreationServlet extends HttpServlet {
         request.setAttribute("topic", topic);
         this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
     }
-
-
 }

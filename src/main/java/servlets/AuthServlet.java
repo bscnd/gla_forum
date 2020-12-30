@@ -50,8 +50,10 @@ public class AuthServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         if ( form.getErreurs().isEmpty() ) {
+            // Je met le bean utilisateur qui vient de se connecter dans la session
             session.setAttribute( SESSION_USER, utilisateur );
         } else {
+            // On ne met rien dan la session car il y a eu des erreurs
             session.setAttribute( SESSION_USER, null );
         }
 

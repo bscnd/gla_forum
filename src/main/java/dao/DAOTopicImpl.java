@@ -49,5 +49,4 @@ public class DAOTopicImpl implements DAOTopic {
             fermeturesSilencieuses( valeursAutoGenerees, preparedStatement, connexion );
         }
     }
-
 }

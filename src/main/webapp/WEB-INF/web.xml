@@ -50,6 +50,16 @@
         <url-pattern>/createtopic</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>MessageCreationServlet</servlet-name>
+        <servlet-class>servlets.MessageCreationServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>MessageCreationServlet</servlet-name>
+        <url-pattern>/answer</url-pattern>
+    </servlet-mapping>
+
     <!-- Configuration des options de jeton de session -->
     <session-config>
         <cookie-config>
