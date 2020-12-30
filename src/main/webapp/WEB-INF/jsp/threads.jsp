@@ -5,13 +5,10 @@
 	
 	<title>FORUM</title>
 	
-	
-	
 	<link rel="stylesheet" href="fichiers/style.css" type="text/css" />
 	</head>
 	<body class="ltr">
-	
-	
+
 		<div id="wrapcentre">
 	
 			<div id="pagecontent">

@@ -34,6 +34,9 @@
 			<p class="succes">Vous êtes connecté(e) en tant que : ${sessionScope.sessionUtilisateur.username}</p>
 		</c:if>
 
+
+
+
 	</fieldset>
 </form>
 </body>

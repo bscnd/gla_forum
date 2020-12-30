@@ -1,39 +1,41 @@
 package servlets;
 
+import beans.UserProfile;
+import dao.DAOFactory;
+import dao.DAOUser;
+import forms.LoginForm;
+
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(name = "servlets.AccueilServlet")
 public class AccueilServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
+    public static final String VUE = "/WEB-INF/jsp/threads.jsp";
+    private static final String SESSION_USER = "sessionUtilisateur";
+    private static final String CONF_DAO_FACTORY = "daofactory";
+    private DAOUser daoUser;
+
+    public void init() throws ServletException {
+        /* Récupération d'une instance de notre DAO Utilisateur (dans init pour éviter qu'une instance ne soit
+         * créée à chaque requête reçue. */
+        this.daoUser = ( (DAOFactory) getServletContext().getAttribute( CONF_DAO_FACTORY ) ).getUtilisateurDao();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
+        // Restauration du contexte
+        this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
+    }
 
-        ServletOutputStream out = response.getOutputStream();
-
-        HttpSession session = request.getSession();
-        String name = (String) session.getAttribute("name");
-
-        if (name != null){
-            out.println("Bonjour, " + name + " !");
-        } else {
-            out.println("Utilisateur inconnu !");
-        }
-
-        request.getRequestDispatcher("/WEB-INF/jsp/threads.jsp").forward(request, response);
-
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
+
+
 }

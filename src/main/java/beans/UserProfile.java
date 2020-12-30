@@ -1,7 +1,6 @@
 package beans;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 /**
  * Bean représentant un utilisateur

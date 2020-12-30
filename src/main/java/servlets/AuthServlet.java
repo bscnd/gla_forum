@@ -35,7 +35,6 @@ public class AuthServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
-        //request.getRequestDispatcher(VUE).forward(request, response);
         this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
     }
 
@@ -61,8 +60,5 @@ public class AuthServlet extends HttpServlet {
         request.setAttribute( "utilisateur", utilisateur );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
-
     }
-
-
 }

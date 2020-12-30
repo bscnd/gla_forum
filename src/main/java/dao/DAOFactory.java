@@ -82,4 +82,12 @@ public class DAOFactory {
     public DAOUser getUtilisateurDao() {
         return new DAOUserImpl( this );
     }
+
+    /**
+     * @return l'implémentation d'un DAOTopic
+     */
+    public DAOTopic getTopicDao() {
+        return new DAOTopicImpl( this );
+    }
+
 }

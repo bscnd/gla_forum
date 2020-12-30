@@ -11,7 +11,6 @@
     <servlet>
         <servlet-name>AccueilServlet</servlet-name>
         <servlet-class>servlets.AccueilServlet</servlet-class>
-
     </servlet>
 
     <servlet-mapping>
@@ -41,11 +40,21 @@
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>TopicCreationServlet</servlet-name>
+        <servlet-class>servlets.TopicCreationServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TopicCreationServlet</servlet-name>
+        <url-pattern>/createtopic</url-pattern>
+    </servlet-mapping>
+
     <!-- Configuration des options de jeton de session -->
     <session-config>
         <cookie-config>
-            <secure>true</secure>
-            <!-- TODO : http-only ne fonctionne pas -->
+            <!-- TODO : http-only pour éviter l'accès via JS -->
+            <!-- TODO : option secure quand SSL activé -->
         </cookie-config>
     </session-config>
 </web-app>
