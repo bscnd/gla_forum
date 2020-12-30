@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashSet;
+import java.util.Set;
 
 import static dao.DAOUtilitaire.fermeturesSilencieuses;
 import static dao.DAOUtilitaire.initRequest;
@@ -15,6 +17,7 @@ public class DAOTopicImpl implements DAOTopic {
 
     private DAOFactory daoFactory;
     private static final String SQL_INSERT_THREAD = "INSERT INTO threads (nom, createur) VALUES (?, ?)";
+    private static final String SQL_GET_ALL_TOPICS = "SELECT * FROM threads";
 
     DAOTopicImpl(DAOFactory daoFactory ) {
         this.daoFactory = daoFactory;
@@ -49,4 +52,37 @@ public class DAOTopicImpl implements DAOTopic {
             fermeturesSilencieuses( valeursAutoGenerees, preparedStatement, connexion );
         }
     }
+
+    public Set<Topic> getAllTopics () throws DAOException {
+        Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        Set<Topic> allTopics = new HashSet<>();
+
+        try {
+            /* Récupération d'une connexion depuis la Factory */
+            connexion = daoFactory.getConnection();
+            preparedStatement = initRequest(connexion, SQL_GET_ALL_TOPICS, false);
+            resultSet = preparedStatement.executeQuery();
+            /* Parcours de la ligne de données de l'éventuel ResulSet retourné */
+            while (resultSet.next()) {
+                Topic topic = map(resultSet);
+                allTopics.add(topic);
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        } finally {
+            fermeturesSilencieuses(resultSet, preparedStatement, connexion);
+        }
+        return allTopics;
+    }
+
+    private static Topic map( ResultSet resultSet ) throws SQLException {
+        Topic topic = new Topic();
+        topic.setTopicname(resultSet.getString("nom"));
+        topic.setCreateur(resultSet.getLong("createur"));
+        topic.setId(resultSet.getLong("id"));
+        return topic;
+    }
+
 }

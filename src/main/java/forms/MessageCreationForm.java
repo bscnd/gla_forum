@@ -38,7 +38,7 @@ public class MessageCreationForm {
             // TODO : Tous les messages sont écrits par Thierry
             String auteur = "Thierry";
             // TODO : Tous les messages appartiennent au topic de Thierry
-            int topic = 2;
+            int topic = 3;
 
             message.setAuteur(auteur);
             message.setTopic(topic);

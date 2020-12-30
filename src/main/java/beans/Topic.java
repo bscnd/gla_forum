@@ -3,7 +3,7 @@ package beans;
 public class Topic {
     private Long id;
     private String topicname;
-    private int createur;
+    private Long createur;
 
 
     public long getId() {
@@ -14,7 +14,7 @@ public class Topic {
         return topicname;
     }
 
-    public int getCreateur() {
+    public long getCreateur() {
         return createur;
     }
 
@@ -26,7 +26,7 @@ public class Topic {
         this.topicname = topicname;
     }
 
-    public void setCreateur(int createur) {
+    public void setCreateur(long createur) {
         this.createur = createur;
     }
 }
