@@ -23,6 +23,7 @@
         <br/>
 
         <p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
+        <a href="http://127.0.0.1:8082/forum-0.0.1-SNAPSHOT/accueil">Allez à l'accueil</a>
     </fieldset>
 </form>
 </body>

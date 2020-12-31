@@ -18,6 +18,8 @@ public class DAOTopicImpl implements DAOTopic {
     private DAOFactory daoFactory;
     private static final String SQL_INSERT_THREAD = "INSERT INTO threads (nom, createur) VALUES (?, ?)";
     private static final String SQL_GET_ALL_TOPICS = "SELECT * FROM threads";
+    private static final String SQL_GET_TOPIC_BY_ID = "SELECT * FROM threads WHERE id = ?";
+
 
     DAOTopicImpl(DAOFactory daoFactory ) {
         this.daoFactory = daoFactory;
@@ -76,6 +78,32 @@ public class DAOTopicImpl implements DAOTopic {
         }
         return allTopics;
     }
+
+    public Topic getTopicById (Long id) throws DAOException {
+        Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        Topic topic = new Topic();
+
+        try {
+            /* Récupération d'une connexion depuis la Factory */
+            connexion = daoFactory.getConnection();
+            preparedStatement = initRequest( connexion, SQL_GET_TOPIC_BY_ID, false, id );
+            resultSet = preparedStatement.executeQuery();
+            /* Parcours de la ligne de données de l'éventuel ResulSet retourné */
+            if ( resultSet.next() ) {
+                topic = map( resultSet );
+            }
+        } catch ( SQLException e ) {
+            throw new DAOException( e );
+        } finally {
+            fermeturesSilencieuses( resultSet, preparedStatement, connexion );
+        }
+
+        return topic;
+    }
+
+
 
     private static Topic map( ResultSet resultSet ) throws SQLException {
         Topic topic = new Topic();

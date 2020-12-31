@@ -1,15 +1,19 @@
 package forms;
 
 import beans.Topic;
+import beans.UserProfile;
 import dao.DAOException;
 import dao.DAOTopic;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 public class TopicCreationForm {
 
     public static final String CHAMP_TOPICNAME = "topicname";
+    private static final String SESSION_USER = "sessionUtilisateur";
+
 
     String resultat;
     Map<String, String> erreurs = new HashMap<>();
@@ -35,8 +39,9 @@ public class TopicCreationForm {
         try {
             traiterTopicname( topicname, topic );
             // TODO : Tous les topics sont créés par Thierry
-            int createur = 6;
-            topic.setCreateur(createur);
+            HttpSession session = request.getSession();
+            UserProfile createur = (UserProfile) session.getAttribute(SESSION_USER);
+            topic.setCreateur(createur.getId());
 
             if ( erreurs.isEmpty() ) {
                 // On créé un nouvea topic seulement si son nom est valide.

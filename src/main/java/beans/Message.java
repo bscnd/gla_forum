@@ -4,7 +4,7 @@ public class Message {
     private Long id;
     private String auteur;
     private String contenu;
-    private int topic;
+    private Long topic;
 
     public Long getId() {
         return id;
@@ -18,7 +18,7 @@ public class Message {
         return contenu;
     }
 
-    public int getTopic() {
+    public Long getTopic() {
         return topic;
     }
 
@@ -34,7 +34,7 @@ public class Message {
         this.contenu = contenu;
     }
 
-    public void setTopic(int topic) {
+    public void setTopic(Long topic) {
         this.topic = topic;
     }
 }

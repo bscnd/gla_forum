@@ -32,6 +32,7 @@
 		<c:if test="${!empty sessionScope.sessionUtilisateur}">
 			<%-- Si l'utilisateur existe en session, alors on affiche son username. --%>
 			<p class="succes">Vous êtes connecté(e) en tant que : ${sessionScope.sessionUtilisateur.username}</p>
+			<a href="http://127.0.0.1:8082/forum-0.0.1-SNAPSHOT/accueil">Allez à l'accueil</a>
 		</c:if>
 	</fieldset>
 </form>

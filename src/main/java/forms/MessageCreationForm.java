@@ -1,15 +1,22 @@
 package forms;
 
 import beans.Message;
+import beans.Topic;
+import beans.UserProfile;
 import dao.DAOException;
 import dao.DAOMessage;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class MessageCreationForm {
     public static final String CHAMP_MESSAGE_CONTENU = "contenu";
+    private static final String SESSION_USER = "sessionUtilisateur";
+
 
     String resultat;
     Map<String, String> erreurs = new HashMap<>();
@@ -35,13 +42,11 @@ public class MessageCreationForm {
 
         try {
             traiterContenu( contenu, message );
-            // TODO : Tous les messages sont écrits par Thierry
-            String auteur = "Thierry";
-            // TODO : Tous les messages appartiennent au topic de Thierry
-            int topic = 3;
 
-            message.setAuteur(auteur);
-            message.setTopic(topic);
+            HttpSession session = request.getSession();
+            UserProfile auteur = (UserProfile) session.getAttribute(SESSION_USER);
+            message.setAuteur(auteur.getUsername());
+            message.setTopic(Long.parseLong(request.getParameter("topicid")));
 
             if ( erreurs.isEmpty() ) {
                 // On créé un nouvea topic seulement si son nom est valide.

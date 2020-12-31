@@ -16,7 +16,8 @@ import java.io.IOException;
 
 @WebServlet (name = "servlets.AuthServlet")
 public class AuthServlet extends HttpServlet {
-    public static final String VUE = "/WEB-INF/jsp/login.jsp";
+    public static final String VUE_LOGIN = "/WEB-INF/jsp/login.jsp";
+    //public static final String VUE_ACCUEIL = "/WEB-INF/jsp/threads.jsp";
     private static final String CONF_DAO_FACTORY = "daofactory";
     private static final String SESSION_USER = "sessionUtilisateur";
     private DAOUser daoUser;
@@ -35,7 +36,7 @@ public class AuthServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
-        this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
+        this.getServletContext().getRequestDispatcher(VUE_LOGIN).forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,7 +45,6 @@ public class AuthServlet extends HttpServlet {
 
         // On récupère l'utilisateur qui a fait la requête de connexion
         UserProfile utilisateur = form.connecterUtilisateur(request);
-
 
         // Créer ou récupérer la session existante
         HttpSession session = request.getSession();
@@ -61,6 +61,6 @@ public class AuthServlet extends HttpServlet {
         request.setAttribute( "form", form );
         request.setAttribute( "utilisateur", utilisateur );
 
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( VUE_LOGIN ).forward( request, response );
     }
 }

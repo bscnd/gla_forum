@@ -60,6 +60,16 @@
         <url-pattern>/answer</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>TopicMessagesServlet</servlet-name>
+        <servlet-class>servlets.TopicMessagesServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TopicMessagesServlet</servlet-name>
+        <url-pattern>/topic</url-pattern>
+    </servlet-mapping>
+
     <!-- Configuration des options de jeton de session -->
     <session-config>
         <cookie-config>

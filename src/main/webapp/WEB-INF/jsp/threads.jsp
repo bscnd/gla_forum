@@ -26,8 +26,7 @@
                             </c:when>
 
                             <c:otherwise>
-                                <%-- TODO : Bouton vers "se connecter" --%>
-                                <p class="succes">Vous n'êtes pas connecté</p>
+                                <a href="http://127.0.0.1:8082/forum-0.0.1-SNAPSHOT/login">Se connecter</a>
                             </c:otherwise>
                         </c:choose>
                     </p>
@@ -41,8 +40,8 @@
         <table cellspacing="1" width="100%">
             <tbody>
             <tr>
-                <td valign="middle" align="left"><img src="fichiers/button_topic_new.gif" alt="Post new topic"
-                                                      title="Post new topic"/></td>
+                <td valign="middle" align="left" colspan="4" nowrap="nowrap">
+                    <a href="http://127.0.0.1:8082/forum-0.0.1-SNAPSHOT/createtopic"><img src="fichiers/button_topic_new.gif" alt="Post new topic" title="Post new topic"/></a></td>
             </tr>
             </tbody>
         </table>
@@ -73,7 +72,7 @@
             <c:forEach items="${allTopics}" var="topic">
 
                 <tr>
-                    <td class="row1"><a class="topictitle" href="#"><c:out value="${topic.topicname}"/></a></td>
+                    <td class="row1"><a class="topictitle" href="http://127.0.0.1:8082/forum-0.0.1-SNAPSHOT/topic?topicid=<c:out value="${topic.id}"/>"><c:out value="${topic.topicname}"/></a></td>
                     <td class="row2" align="center" width="130"><p class="topicauthor"><a class="username-coloured"
                                                                                           href="#"><c:out
                             value="${topic.createur}"/></a></p></td>
